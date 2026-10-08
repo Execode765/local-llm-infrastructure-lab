@@ -8,16 +8,52 @@ Deploy a locally hosted large language model using Ollama on a Windows computer 
 
 The purpose of this lab is to gain hands-on experience with local AI infrastructure, model deployment, GPU acceleration, and basic performance evaluation.
 
-2. Lab Environment
+## 2. Lab Environment
 
-Component	Configuration
-Operating System	Windows
-LLM Runtime	Ollama
-GPU	To be documented
-System RAM	To be documented
-CPU	To be documented
-Model	To be documented
-Model Quantization	To be documented
+The following hardware was used to deploy and test the Qwen3:4B model.
+
+| Component | Specification |
+|---|---|
+| CPU | Intel Core i9-13980HX |
+| GPU | NVIDIA GeForce RTX 4070 Laptop GPU |
+| GPU VRAM | 8 GB |
+| System RAM | 64 GB |
+| Operating System | Windows 11 Home (64-bit), build 26200 |
+| NVIDIA Driver | 566.07 |
+| CUDA Version Reported by Driver | 12.7 |
+| LLM Runtime | Ollama |
+| Model | Qwen3:4B |
+| Quantization | Q4_K_M |
+| Storage | Pending verification |
+
+### GPU Monitoring Results
+
+The NVIDIA System Management Interface (`nvidia-smi`) was used to inspect GPU activity during local LLM operation.
+
+```powershell
+nvidia-smi
+```
+
+**Observed results — October 8, 2026**
+
+| Metric | Observed Value |
+|---|---|
+| GPU utilization | 97% |
+| GPU memory usage | 3,185 / 8,188 MiB |
+| GPU temperature | 61°C |
+| GPU power consumption | 81 W |
+| Reported power limit | 113 W |
+| GPU compute process | llama-server.exe |
+
+### Analysis
+
+Ollama previously reported 100% GPU allocation for the Qwen3:4B model.
+
+A separate NVIDIA monitoring snapshot reported 97% GPU utilization, demonstrating substantial GPU activity during the observation.
+
+These results represent initial monitoring observations rather than a controlled performance benchmark.
+
+Future testing will measure inference throughput, latency, and GPU resource consumption under repeatable workloads.
 
 3. Pre-Deployment Preparation
 
