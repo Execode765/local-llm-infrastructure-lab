@@ -80,3 +80,51 @@ CPU utilization	Not yet documented
 * Add screenshots of successful inference and GPU allocation.
 * Establish repeatable performance benchmarks.
 * Compare future model configurations.
+
+
+## Model Configuration and Verification
+
+The deployed model was inspected using the following PowerShell commands:
+
+```powershell
+ollama list
+ollama ps
+ollama show qwen3:4b
+```
+
+### Verified Configuration
+
+| Property | Value |
+|---|---|
+| Model | qwen3:4b |
+| Model ID | 359d7dd4bcda |
+| Architecture | qwen3 |
+| Parameters | 4.0 billion |
+| Quantization | Q4_K_M |
+| Downloaded model size | 2.5 GB |
+| Loaded model size | 3.2 GB |
+| GPU allocation | 100% |
+| Model maximum context | 262,144 tokens |
+| Active inference context | 4,096 tokens |
+| Embedding length | 2,560 |
+| Inference backend | llama.cpp |
+
+### Observations
+
+The Qwen3:4B model was successfully deployed through Ollama on Windows.
+
+The `ollama ps` command reported 100% GPU allocation, confirming that Ollama placed the loaded model entirely on the GPU at the time of observation.
+
+The model uses Q4_K_M quantization, reducing its memory footprint compared with higher-precision representations.
+
+Although the model supports a maximum context length of 262,144 tokens, the active Ollama session was configured with 4,096 tokens.
+
+### Verification Status
+
+- [x] Model installed
+- [x] Model configuration inspected
+- [x] Quantization identified
+- [x] GPU allocation verified
+- [ ] GPU utilization measured
+- [ ] Inference throughput benchmarked
+- [ ] Performance compared across models
