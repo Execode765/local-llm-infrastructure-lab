@@ -163,6 +163,8 @@ The model uses Q4_K_M quantization, reducing its memory footprint compared with 
 
 Although the model supports a maximum context length of 262,144 tokens, the active Ollama session was configured with 4,096 tokens.
 
+![ollama-gpu-allocation](screenshots/ollama-gpu-allocation.png)
+
 ### Verification Status
 
 - [x] Model installed
