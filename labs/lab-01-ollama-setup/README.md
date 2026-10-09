@@ -2,7 +2,7 @@ Lab 01 — Ollama Deployment and GPU Verification
 
 Status: In Progress
 
-1. Objective
+## 1. Objective
 
 Deploy a locally hosted large language model using Ollama on a Windows computer and verify that inference workloads are being processed by the GPU.
 
@@ -55,7 +55,7 @@ These results represent initial monitoring observations rather than a controlled
 
 Future testing will measure inference throughput, latency, and GPU resource consumption under repeatable workloads.
 
-3. Pre-Deployment Preparation
+## 3. Pre-Deployment Preparation
 
 Before deploying the local LLM environment, a full system image was created using AOMEI Backupper.
 
@@ -65,7 +65,7 @@ This provided a recovery option in the event of configuration errors or system i
 
 Note: Booting successfully into recovery media does not by itself verify that a complete system restore will succeed.
 
-4. Ollama Deployment
+## 4. Ollama Deployment
 
 Ollama was installed and configured to run a language model locally.
 
@@ -79,7 +79,7 @@ The initial deployment involved:
 
 Exact installation commands and model identifiers will be added after verification.
 
-5. GPU Verification
+## 5. GPU Verification
 
 The following command was used to inspect active model allocation:
 
@@ -91,17 +91,19 @@ This indicates that Ollama reported the model as fully GPU-resident during the o
 
 It does not necessarily mean the GPU was operating at 100% computational utilization.
 
-6. Initial Test Results
+## 6. Initial Test Results
 
-Test	Observation
-Local model execution	Successful
-Text generation	Responsive
-GPU model allocation	100% reported
-Tokens per second	Not yet measured
-GPU memory usage	Not yet documented
-CPU utilization	Not yet documented
+| Test | Observation |
+|---|---|
+| Local model execution | Successful |
+| Text generation | Responsive |
+| GPU model allocation | 100% reported |
+| GPU utilization | 97% observed snapshot |
+| GPU memory usage | 3,185 MiB observed |
+| Tokens per second | Not yet measured |
+| CPU utilization | Not yet documented |
 
-7. Lessons Learned
+## 7. Lessons Learned
 
 * Local LLMs can execute on personally managed hardware without requiring a hosted inference service.
 * Ollama provides command-line tools for managing and inspecting local models.
@@ -109,16 +111,16 @@ CPU utilization	Not yet documented
 * Performance observations should be supported by repeatable benchmarks.
 * System backups and recovery planning are valuable preparation steps before infrastructure changes.
 
-8. Next Steps
+## 8. Next Steps
 
-* Record exact hardware specifications.
-* Identify the installed model and quantization.
-* Add screenshots of successful inference and GPU allocation.
-* Establish repeatable performance benchmarks.
-* Compare future model configurations.
+- Verify and document storage specifications.
+- Upload screenshots of model configuration and GPU monitoring.
+- Establish repeatable inference performance benchmarks.
+- Measure tokens per second and response latency.
+- Compare future model configurations.
 
 
-## Model Configuration and Verification
+## 9. Model Configuration and Verification
 
 The deployed model was inspected using the following PowerShell commands:
 
@@ -161,6 +163,7 @@ Although the model supports a maximum context length of 262,144 tokens, the acti
 - [x] Model configuration inspected
 - [x] Quantization identified
 - [x] GPU allocation verified
-- [ ] GPU utilization measured
+- [x] GPU utilization measured (single snapshot)
+- [x] GPU memory usage recorded
 - [ ] Inference throughput benchmarked
 - [ ] Performance compared across models
