@@ -30,9 +30,8 @@ The following hardware was used to deploy and test the Qwen3:4B model.
 
 The NVIDIA System Management Interface (`nvidia-smi`) was used to inspect GPU activity during local LLM operation.
 
-```powershell
-nvidia-smi
-```
+![nvidia-smi](screenshots/nvidia-smi.png)
+
 
 **Observed results — October 8, 2026**
 
@@ -113,16 +112,7 @@ It does not necessarily mean the GPU was operating at 100% computational utiliza
 * Performance observations should be supported by repeatable benchmarks.
 * System backups and recovery planning are valuable preparation steps before infrastructure changes.
 
-## 8. Next Steps
-
-- Verify and document storage specifications.
-- Upload remaining GPU monitoring and model verification screenshots.
-- Establish repeatable inference performance benchmarks.
-- Measure tokens per second and response latency.
-- Compare future model configurations.
-
-
-## 9. Model Configuration and Verification
+## 8. Model Configuration and Verification
 
 The deployed model was inspected using the following PowerShell commands:
 
@@ -175,3 +165,11 @@ Although the model supports a maximum context length of 262,144 tokens, the acti
 - [x] GPU memory usage recorded
 - [ ] Inference throughput benchmarked
 - [ ] Performance compared across models
+
+## 9. Next Steps
+
+- Verify and document storage specifications.
+- Upload remaining GPU monitoring and model verification screenshots.
+- Establish repeatable inference performance benchmarks.
+- Measure tokens per second and response latency.
+- Compare future model configurations.
