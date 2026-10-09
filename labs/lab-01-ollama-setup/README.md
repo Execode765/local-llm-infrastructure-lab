@@ -1,4 +1,4 @@
-Lab 01 — Ollama Deployment and GPU Verification
+# Lab 01 — Ollama Deployment and GPU Verification
 
 Status: In Progress
 
@@ -83,7 +83,9 @@ Exact installation commands and model identifiers will be added after verificati
 
 The following command was used to inspect active model allocation:
 
+```powershell
 ollama ps
+```
 
 During testing, Ollama reported 100% GPU allocation for the running model.
 
@@ -114,7 +116,7 @@ It does not necessarily mean the GPU was operating at 100% computational utiliza
 ## 8. Next Steps
 
 - Verify and document storage specifications.
-- Upload screenshots of model configuration and GPU monitoring.
+- Upload remaining GPU monitoring and model verification screenshots.
 - Establish repeatable inference performance benchmarks.
 - Measure tokens per second and response latency.
 - Compare future model configurations.
