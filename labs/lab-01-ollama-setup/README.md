@@ -147,6 +147,10 @@ ollama show qwen3:4b
 | Embedding length | 2,560 |
 | Inference backend | llama.cpp |
 
+### Model Configuration Screenshot
+
+![Qwen3 model configuration](screenshots/qwen3-model-configuration.png)
+
 ### Observations
 
 The Qwen3:4B model was successfully deployed through Ollama on Windows.
