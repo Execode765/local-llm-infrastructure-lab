@@ -24,7 +24,7 @@ The following hardware was used to deploy and test the Qwen3:4B model.
 | LLM Runtime | Ollama |
 | Model | Qwen3:4B |
 | Quantization | Q4_K_M |
-| Storage | Pending verification |
+| Storage | 2.5 GB |
 
 ### GPU Monitoring Results
 
@@ -155,6 +155,17 @@ Although the model supports a maximum context length of 262,144 tokens, the acti
 
 ![ollama-gpu-allocation](screenshots/ollama-gpu-allocation.png)
 
+
+## 9. Storage Specification
+
+The 2.5 GB reported by Ollama and 2.33 GiB measured by PowerShell are consistent after accounting for decimal versus binary units.
+
+One technical detail worth remembering: ollama list confirms that Qwen3:4B is the only model currently registered. The directory measurement includes its associated files, so we should describe 2.33 GiB as the total Ollama model-directory footprint, rather than attributing every byte exclusively to model weights.
+
+![Final storage baseline](screenshots/storage-baseline.png)
+
+
+
 ### Verification Status
 
 - [x] Model installed
@@ -166,9 +177,8 @@ Although the model supports a maximum context length of 262,144 tokens, the acti
 - [ ] Inference throughput benchmarked
 - [ ] Performance compared across models
 
-## 9. Next Steps
+## 10. Next Steps
 
-- Verify and document storage specifications.
 - Upload remaining GPU monitoring and model verification screenshots.
 - Establish repeatable inference performance benchmarks.
 - Measure tokens per second and response latency.
