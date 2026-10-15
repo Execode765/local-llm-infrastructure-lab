@@ -24,7 +24,7 @@ The following hardware was used to deploy and test the Qwen3:4B model.
 | LLM Runtime | Ollama |
 | Model | Qwen3:4B |
 | Quantization | Q4_K_M |
-| Storage | 2.5 GB |
+| Storage | Crucial P3 4 TB NVMe SSD (C:)|
 
 ### GPU Monitoring Results
 
@@ -179,7 +179,6 @@ One technical detail worth remembering: ollama list confirms that Qwen3:4B is th
 
 ## 10. Next Steps
 
-- Upload remaining GPU monitoring and model verification screenshots.
 - Establish repeatable inference performance benchmarks.
 - Measure tokens per second and response latency.
 - Compare future model configurations.
