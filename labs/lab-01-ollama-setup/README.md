@@ -22,6 +22,7 @@ The following hardware was used to deploy and test the Qwen3:4B model.
 | NVIDIA Driver | 566.07 |
 | CUDA Version Reported by Driver | 12.7 |
 | LLM Runtime | Ollama |
+| Ollama Version | 0.40.11 |
 | Model | Qwen3:4B |
 | Quantization | Q4_K_M |
 | Storage | Crucial P3 4 TB NVMe SSD (C:)|
