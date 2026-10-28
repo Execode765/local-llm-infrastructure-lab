@@ -316,9 +316,9 @@ Additional testing with other models is required before making cross-model perfo
 
 ### Evidence
 
-![ollama-gpu-allocation](screenshots/benchmarks/qwen3-api-benchmark-01.png)
+![API-Benchmark](screenshots/benchmarks/qwen3-api-benchmark-01.png)
 
-![ollama-gpu-allocation](screenshots/benchmarks/qwen3-warm-inference.png)
+![warm-interference](screenshots/benchmarks/qwen3-warm-inference.png)
 
 
 ## 11. Next Steps
