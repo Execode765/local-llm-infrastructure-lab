@@ -1,6 +1,6 @@
 # Lab 01 — Ollama Deployment and GPU Verification
 
-Status: In Progress
+Status: Complete
 
 ## 1. Objective
 
@@ -77,7 +77,87 @@ The initial deployment involved:
 4. Running an interactive inference session.
 5. Testing model responses.
 
-Exact installation commands and model identifiers will be added after verification.
+
+### Installation and Deployment Commands
+
+The following PowerShell commands were used or verified during Lab 01.
+
+#### Verify Ollama Installation
+
+```powershell
+ollama --version
+```
+
+Displays the installed Ollama version.
+
+Verified version during benchmarking: `0.40.11`.
+
+#### Download a Language Model
+
+```powershell
+ollama pull qwen3:4b
+```
+
+Downloads the Qwen3:4B model from the Ollama model registry.
+
+The model is stored locally and can be used without an internet connection after downloading.
+
+#### Launch an Interactive Inference Session
+
+```powershell
+ollama run qwen3:4b
+```
+
+Loads the model and opens an interactive session.
+
+To exit the session:
+
+```text
+/bye
+```
+
+#### List Installed Models
+
+```powershell
+ollama list
+```
+
+Displays locally installed models, their identifiers, and reported sizes.
+
+#### Inspect Model Configuration
+
+```powershell
+ollama show qwen3:4b
+```
+
+Displays model information including architecture, parameter count, quantization, and context length.
+
+#### Verify GPU Allocation
+
+```powershell
+ollama ps
+```
+
+Displays currently loaded models, processor allocation, context settings, and model retention information.
+
+#### Unload a Model
+
+```powershell
+ollama stop qwen3:4b
+```
+
+Unloads the model from memory without deleting its downloaded files.
+
+#### Display the Model Template
+
+```powershell
+ollama show --modelfile qwen3:4b
+```
+
+Displays the model's configuration template, including parameters and prompt formatting.
+
+This command was used during troubleshooting of Qwen3 reasoning-mode behavior.
+
 
 ## 5. GPU Verification
 
@@ -102,7 +182,7 @@ It does not necessarily mean the GPU was operating at 100% computational utiliza
 | GPU model allocation | 100% reported |
 | GPU utilization | 97% observed snapshot |
 | GPU memory usage | 3,185 MiB observed |
-| Tokens per second | Not yet measured |
+| Tokens per second | Qwen3:4B averaged 82.72 tokens/s across four API runs |
 | CPU utilization | Not yet documented |
 
 ## 7. Lessons Learned
@@ -163,6 +243,8 @@ The 2.5 GB reported by Ollama and 2.33 GiB measured by PowerShell are consistent
 
 One technical detail worth remembering: ollama list confirms that Qwen3:4B is the only model currently registered. The directory measurement includes its associated files, so we should describe 2.33 GiB as the total Ollama model-directory footprint, rather than attributing every byte exclusively to model weights.
 
+The storage measurements above were recorded before Gemma 3 4B was installed. They represent the original Qwen3-only storage baseline.
+
 ![Final storage baseline](screenshots/storage-baseline.png)
 
 
@@ -176,7 +258,7 @@ One technical detail worth remembering: ollama list confirms that Qwen3:4B is th
 - [x] GPU utilization measured (single snapshot)
 - [x] GPU memory usage recorded
 - [x] Inference throughput benchmarked
-- [ ] Performance compared across models
+- [x] Performance compared across models
 
 
 ## 10. Inference Performance Benchmarking
@@ -311,7 +393,65 @@ These measurements represent a preliminary performance baseline using a single m
 
 The benchmark did not independently measure time to first token or conduct a sustained GPU stress test.
 
-Additional testing with other models is required before making cross-model performance comparisons.
+A preliminary comparison with Gemma 3 4B was completed. Because model tokenization and reasoning behavior differ, the results should not be interpreted as a definitive comparison of equivalent workloads or overall model quality.
+
+
+### Qwen3 Reasoning-Mode Observation
+
+During additional testing, Qwen3:4B continued generating reasoning-style text despite API requests specifying `think = false`.
+
+The generated output included a closing `</think>` tag, and multiple requests reached their configured output-token limits.
+
+Inspection of the model's Modelfile revealed a prompt template that explicitly inserts an opening `<think>` tag at the beginning of assistant generation without checking the thinking-mode setting in that branch.
+
+This behavior may explain why reasoning-style output persisted. Further testing would be needed to establish the exact interaction between the model template and Ollama 0.40.11.
+
+The original benchmark measurements remain recorded as observed inference performance. They should not be interpreted as a controlled comparison of non-reasoning output.
+
+
+### Cross-Model Performance Comparison
+
+Two locally deployed language models were evaluated using Ollama 0.40.11 on the NVIDIA RTX 4070 Laptop GPU.
+
+Both models were tested through Ollama's local REST API using the same CPU-versus-GPU explanation prompt, a 4,096-token context window, temperature zero, and streaming disabled.
+
+#### Model Configuration
+
+| Specification | Qwen3:4B | Gemma 3 4B |
+|---|---|---|
+| Architecture | qwen3 | gemma3 |
+| Parameters | 4.0B | 3.9B |
+| Quantization | Q4_K_M | Q4_K_M |
+| Download Size | 2.5 GB | 3.4 GB |
+| Loaded Model Size | 3.2 GB | 2.9 GB |
+| GPU Allocation | 100% GPU | 100% GPU |
+
+#### Performance Results
+
+| Measurement | Qwen3:4B | Gemma 3 4B |
+|---|---:|---:|
+| API Trials | 4 | 3 |
+| Average Generation Throughput | 82.72 tokens/s | 81.75 tokens/s |
+| Warm-Inference Throughput | 83.06 tokens/s | 82.53 tokens/s |
+| Warm Model Load Duration | 0.008 s | 0.006 s |
+| Warm Total Request Duration | 7.342 s | 2.135 s |
+| Warm Generated Tokens | 578 | 172 |
+
+#### Observations
+
+Both models demonstrated similar token generation throughput on the same GPU.
+
+Qwen3:4B achieved an average generation throughput of 82.72 tokens per second, while Gemma 3 4B averaged 81.75 tokens per second.
+
+Gemma 3 completed the warm-inference request in less time, but it generated substantially fewer tokens.
+
+Because the models use different tokenizers and produce different amounts of output, total response duration cannot be used alone to determine which model is inherently faster.
+
+Additional Qwen3 testing revealed that reasoning-style text continued to appear despite attempts to disable thinking mode.
+
+Therefore, these measurements represent preliminary cross-model infrastructure observations rather than a definitive comparison of model efficiency, answer quality, or equivalent non-reasoning workloads.
+
+Both models successfully executed inference with Ollama reporting 100% GPU allocation.
 
 
 ### Evidence
@@ -321,6 +461,15 @@ Additional testing with other models is required before making cross-model perfo
 ![warm-interference](screenshots/benchmarks/qwen3-warm-inference.png)
 
 
+![Gemma 3 initial API benchmark](screenshots/benchmarks/gemma3-api-benchmark-01.png)
+
+![Gemma 3 warm inference benchmark](screenshots/benchmarks/gemma3-warm-inference.png)
+
+
 ## 11. Next Steps
 
-- Compare future model configurations.
+- Perform final documentation review and verification.
+- Confirm all benchmark screenshots display correctly.
+- Review and finalize Lab 01 results and conclusions.
+- Begin Lab 02 after Lab 01 is formally completed.
+
