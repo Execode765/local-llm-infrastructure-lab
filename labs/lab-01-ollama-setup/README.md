@@ -466,10 +466,37 @@ Both models successfully executed inference with Ollama reporting 100% GPU alloc
 ![Gemma 3 warm inference benchmark](screenshots/benchmarks/gemma3-warm-inference.png)
 
 
-## 11. Next Steps
+## 11. AI-Assisted Learning and Development
 
-- Perform final documentation review and verification.
-- Confirm all benchmark screenshots display correctly.
-- Review and finalize Lab 01 results and conclusions.
-- Begin Lab 02 after Lab 01 is formally completed.
+This project was completed with educational and technical assistance from **ChatGPT by OpenAI**.
 
+ChatGPT served as an interactive learning assistant throughout the lab, providing guidance in the following areas:
+
+- Understanding local LLM infrastructure and GPU acceleration.
+- Deploying and configuring language models using Ollama.
+- Learning PowerShell commands and troubleshooting techniques.
+- Developing and executing inference performance benchmarks.
+- Interpreting experimental results and identifying limitations.
+- Investigating unexpected model behavior.
+- Organizing technical documentation using GitHub and Markdown.
+
+### Hands-On Implementation
+
+All hands-on lab activities were performed by the repository owner, including:
+
+- Executing commands and configuring the local environment.
+- Installing and testing language models.
+- Monitoring GPU utilization and resource allocation.
+- Collecting benchmark measurements and screenshots.
+- Troubleshooting technical issues.
+- Maintaining repository files and GitHub commits.
+
+### AI Transparency Statement
+
+ChatGPT was used as an educational resource, technical guide, and documentation assistant.
+
+AI assistance included explanations, suggested commands, troubleshooting guidance, benchmark methodology, and assistance drafting and reviewing documentation.
+
+The repository owner performed the hands-on implementation and verified the reported results using personally managed hardware.
+
+**Project Approach:** AI-assisted learning, human-executed testing, and documented technical verification.
