@@ -178,7 +178,153 @@ One technical detail worth remembering: ollama list confirms that Qwen3:4B is th
 - [ ] Inference throughput benchmarked
 - [ ] Performance compared across models
 
-## 10. Next Steps
+
+## 10. Inference Performance Benchmarking
+
+### Objective
+
+
+Measure and evaluate the inference performance of the locally deployed Qwen3:4B model using Ollama's API.
+
+The purpose of this benchmark is to establish a repeatable performance baseline by measuring token generation throughput, prompt processing, total response duration, and model loading time.
+
+The experiment also compares cold-load and warm-inference behavior to determine how model residency in GPU memory affects overall response time.
+
+
+### Test Configuration
+
+
+| Parameter | Configuration |
+|---|---|
+| CPU | Intel Core i9-13980HX |
+| GPU | NVIDIA RTX 4070 Laptop GPU (8 GB VRAM) |
+| System RAM | 64 GB |
+| Operating System | Windows 11 Home |
+| Ollama Version | 0.40.11 |
+| Model | Qwen3:4B |
+| Quantization | Q4_K_M |
+| API Endpoint | http://localhost:11434/api/generate |
+| Context Window | 4,096 tokens |
+| Temperature | 0 |
+| Streaming | Disabled |
+| Model Retention | 10 minutes |
+
+
+### Benchmark Methodology
+
+
+The Qwen3:4B model was benchmarked using Ollama's local REST API through Windows PowerShell.
+
+Testing was conducted using the `/api/generate` endpoint with a consistent prompt and model configuration.
+
+The benchmark prompt was:
+
+> Explain the difference between CPU and GPU processing in approximately 150 words.
+
+Each API request was configured with:
+
+- Streaming disabled (`stream = false`).
+- Temperature set to zero (`temperature = 0`).
+- Context window set to 4,096 tokens (`num_ctx = 4096`).
+- Model retention set to 10 minutes (`keep_alive = "10m"`).
+
+Four controlled API inference requests were recorded.
+
+The first three requests included approximately five seconds of model-loading time. The fourth request was executed while the model was already loaded in GPU memory, producing a substantially shorter load duration.
+
+Ollama's API returned timing measurements in nanoseconds. These were converted into seconds to calculate inference throughput and compare cold-load and warm-inference behavior.
+
+Generation throughput was calculated using:
+
+Tokens per second = Generated tokens / Generation duration (seconds)
+
+The benchmark also recorded total request duration, model loading duration, and generated token counts.
+
+GPU residency was verified using the `ollama ps` command.
+
+
+### Benchmark Results
+
+
+Four controlled API benchmark runs were completed using Qwen3:4B with consistent model settings and the same input prompt.
+
+| Metric | Run 1 | Run 2 | Run 3 | Run 4 (Warm) |
+|---|---:|---:|---:|---:|
+| Generated tokens | 642 | 642 | 642 | 578 |
+| Generation throughput (tokens/s) | 82.88 | 82.55 | 82.40 | 83.06 |
+| Model load duration (s) | 5.305 | 4.983 | 4.976 | 0.008 |
+| Total request duration (s) | 13.096 | 12.802 | 12.807 | 7.342 |
+
+### Performance Summary
+
+| Measurement | Result |
+|---|---:|
+| Average generation throughput | 82.72 tokens/s |
+| Minimum generation throughput | 82.40 tokens/s |
+| Maximum generation throughput | 83.06 tokens/s |
+| Generation throughput range | 0.66 tokens/s |
+| Warm-inference model load duration | 0.008 seconds |
+| Cold-load duration range | 4.976–5.305 seconds |
+
+The average generation throughput was calculated across all four API benchmark runs.
+
+The results indicate stable token generation throughput under the tested conditions, despite differences in model-loading duration.
+
+![ollama-gpu-allocation](screenshots/Bench-test.png)
+
+### Analysis and Observations
+
+
+The Qwen3:4B model demonstrated consistent inference throughput across four controlled API benchmark runs on the NVIDIA RTX 4070 Laptop GPU.
+
+Generation throughput ranged from 82.40 to 83.06 tokens per second, with an average of 82.72 tokens per second.
+
+### GPU Performance
+
+Previous GPU verification confirmed that Ollama reported 100% GPU allocation for the model.
+
+The benchmark results demonstrate that the system can maintain consistent token generation throughput under the tested configuration.
+
+### Cold-Load vs. Warm-Inference Performance
+
+The first three API benchmark runs reported model-loading durations between 4.976 and 5.305 seconds.
+
+During the fourth run, the model was verified as already loaded in GPU memory using `ollama ps`.
+
+The fourth run reported a model-loading duration of approximately 0.008 seconds.
+
+These observations demonstrate that retaining a model in memory can substantially reduce model-loading overhead.
+
+### Performance Consistency
+
+Generation throughput varied by only 0.66 tokens per second across the four runs.
+
+Although the total response duration differed between tests, generation throughput remained relatively stable.
+
+Total response duration was influenced by model-loading overhead and differences in the number of generated tokens.
+
+### Limitations
+
+These measurements represent a preliminary performance baseline using a single model, one prompt, and a limited number of trials.
+
+The benchmark did not independently measure time to first token or conduct a sustained GPU stress test.
+
+Additional testing with other models is required before making cross-model performance comparisons.
+
+
+### Evidence
+
+![ollama-gpu-allocation](screenshots/benchmarks/qwen3-api-benchmark-01.png)
+
+![ollama-gpu-allocation](screenshots/benchmarks/qwen3-warm-inference.png)
+
+![ollama-gpu-allocation](screenshots/benchmarks/Initial-API-benchmark.png)
+
+![ollama-gpu-allocation](screenshots/benchmarks/Warm-inference-benchmark.png)
+
+
+
+## 11. Next Steps
 
 - Establish repeatable inference performance benchmarks.
 - Measure tokens per second and response latency.
