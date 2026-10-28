@@ -175,7 +175,7 @@ One technical detail worth remembering: ollama list confirms that Qwen3:4B is th
 - [x] GPU allocation verified
 - [x] GPU utilization measured (single snapshot)
 - [x] GPU memory usage recorded
-- [ ] Inference throughput benchmarked
+- [x] Inference throughput benchmarked
 - [ ] Performance compared across models
 
 
@@ -255,6 +255,8 @@ Four controlled API benchmark runs were completed using Qwen3:4B with consistent
 | Model load duration (s) | 5.305 | 4.983 | 4.976 | 0.008 |
 | Total request duration (s) | 13.096 | 12.802 | 12.807 | 7.342 |
 
+![ollama-gpu-allocation](screenshots/Bench-test.png)
+
 ### Performance Summary
 
 | Measurement | Result |
@@ -270,7 +272,7 @@ The average generation throughput was calculated across all four API benchmark r
 
 The results indicate stable token generation throughput under the tested conditions, despite differences in model-loading duration.
 
-![ollama-gpu-allocation](screenshots/Bench-test.png)
+
 
 ### Analysis and Observations
 
@@ -318,14 +320,7 @@ Additional testing with other models is required before making cross-model perfo
 
 ![ollama-gpu-allocation](screenshots/benchmarks/qwen3-warm-inference.png)
 
-![ollama-gpu-allocation](screenshots/benchmarks/Initial-API-benchmark.png)
-
-![ollama-gpu-allocation](screenshots/benchmarks/Warm-inference-benchmark.png)
-
-
 
 ## 11. Next Steps
 
-- Establish repeatable inference performance benchmarks.
-- Measure tokens per second and response latency.
 - Compare future model configurations.
