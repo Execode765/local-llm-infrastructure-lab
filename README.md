@@ -1,39 +1,26 @@
-Local LLM Infrastructure Lab
+# Local LLM Infrastructure Lab
 
-Author: Kelli Love | EXEcode765
+**Author:** Kelli Love | EXEcode765
 
-Project Overview
+Hands-on portfolio documenting local LLM deployment, GPU inference testing, Linux server virtualization, and infrastructure troubleshooting. The goal is to build practical skills for systems administration and AI infrastructure operations.
 
-This repository documents my hands-on journey into AI infrastructure engineering, focusing on deploying, configuring, testing, and troubleshooting locally hosted large language models.
+## Lab progress
 
-My background is in IT field support, Windows systems, hardware troubleshooting, and technical operations. This project is part of my transition toward AI infrastructure, systems administration, and automation.
+| Lab | Focus | Status | Documentation |
+|---|---|---|---|
+| 01 | Ollama deployment, GPU verification, storage and benchmarking | Completed | [Lab 01](labs/lab-01-ollama-setup/) |
+| 02 | Qwen inference and performance testing | Completed within available hardware limits | [Lab 02](lab-02-qwen-inference.md) |
+| 03 | Ubuntu Server VM, remote administration, failure and recovery | **Phase 1 complete**; fault injection pending | [Phase 1 report](labs/lab-03-ubuntu-server/lab-03-phase-1.md) · [Command reference](labs/lab-03-ubuntu-server/lab-03-command-reference.md) |
+| 04 | Physical GPU/server troubleshooting on salvaged hardware | Planned | — |
 
-Project Objectives
+## Lab 03 milestone (2026-11-07)
 
-* Deploy and manage locally hosted large language models.
-* Understand GPU acceleration and hardware resource utilization.
-* Evaluate inference performance and model configurations.
-* Develop practical troubleshooting and system administration skills.
-* Document technical procedures, results, and lessons learned.
+Installed Ubuntu Server 24.04.5 LTS in VirtualBox 7.2.22, configured LVM and NAT networking, established SSH access from Windows PowerShell, verified package health, and captured the powered-off recovery snapshot `Lab03-Baseline-Clean-Install`.
 
-Lab Progress
+Next: controlled failure and recovery experiments, with results and commands documented in the Lab 03 folder.
 
-Lab	Description	Status
-01	Ollama Deployment and GPU Verification	In Progress
-02	Model Comparison and Quantization	Planned
-03	Performance Benchmarking	Planned
+## Technologies
+Windows, PowerShell, Ollama, local LLMs, NVIDIA GPU acceleration, Oracle VirtualBox, Ubuntu Server, Linux CLI, SSH, LVM, Git and GitHub.
 
-Technologies
-
-* Windows
-* Ollama
-* Local large language models
-* GPU-accelerated inference
-* PowerShell
-* Git and GitHub
-
-Documentation Approach
-
-Each lab includes its objective, environment, implementation steps, verification results, troubleshooting observations, and lessons learned.
-
-This repository is an evolving technical portfolio documenting real-world experimentation and continuous skill development.
+## Documentation approach
+Each lab records its objectives, environment, commands, observed results, troubleshooting steps, and lessons learned. This repository documents actual experiments, not claimed production deployments.
