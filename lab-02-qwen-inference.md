@@ -74,3 +74,18 @@ $result | ConvertTo-Json -Depth 10
 ollama ps
 ```
 
+## Practical test — Windows DHCP troubleshooting
+
+This test used the same Qwen3.5 4B build and Chat API settings as the 8,192-token Friday diagnostic, with `think=false`. To reproduce it, substitute this prompt for `$prompt` in the API example above.
+
+> A Windows workstation has an IPv4 address of 169.254.23.10 and no default gateway. In three bullets, tell me what likely happened, what to check first, and which command shows the adapter's DHCP configuration.
+
+| Total (s) | Load (s) | Generation (s) | Generated tokens | Active context | GPU allocation | Stop reason |
+|---:|---:|---:|---:|---:|---:|---|
+| 8.314 | 6.083 | 2.136 | 142 | 8,192 | 100% | `stop` |
+
+**Partially correct.** The model followed the three-bullet format, identified the likely DHCP lease failure and IPv4 link-local fallback, and named `ipconfig /all`. The first check should be whether Ethernet has link or Wi-Fi is connected. The answer jumped to restarting the network stack or rebooting. It also suggested `Get-DhcpServerv4Lease`, which queries server-side leases, and incorrectly claimed `ipconfig /all` would display “No server responds.”
+
+Microsoft references — [ipconfig](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ipconfig) and [Get-DhcpServerv4Lease](https://learn.microsoft.com/powershell/module/dhcpserver/get-dhcpserverv4lease).
+
+Most of the 8.314-second wait was model loading. Generation took 2.136 seconds, compared with 108.705 seconds and 6,965 tokens for the Friday API run. The task and requested format both changed, and each was run once, so the difference is an observation across two prompts. This run returned the three bullets without a separate thinking trace. The broader effect of the thinking setting remains unresolved.
