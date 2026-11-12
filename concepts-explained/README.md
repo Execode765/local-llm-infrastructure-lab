@@ -10,6 +10,7 @@ Plain-English companion guides to the [Local LLM Infrastructure Lab](../README.m
 
 1. [What Does It Really Mean to Run AI on Your Own Computer?](01-what-is-local-ai.md) — companion to [Lab 01](../labs/lab-01-ollama-setup/README.md).
 2. [Why Do Different AI Models Give Different Answers?](02-how-ai-models-work.md) — companion to [Lab 02](../lab-02-qwen-inference.md).
+3. [How Can You Run a Computer Inside Another Computer?](03-virtual-machines-explained.md) — companion to [Lab 03 Phase 1](../labs/lab-03-ubuntu-server/lab-03-phase-1.md).
 
 ## Format for future guides
 
