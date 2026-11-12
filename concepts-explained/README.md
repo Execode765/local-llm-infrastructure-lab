@@ -9,6 +9,7 @@ Plain-English companion guides to the [Local LLM Infrastructure Lab](../README.m
 ## Published guides
 
 1. [What Does It Really Mean to Run AI on Your Own Computer?](01-what-is-local-ai.md) — companion to [Lab 01](../labs/lab-01-ollama-setup/README.md).
+2. [Why Do Different AI Models Give Different Answers?](02-how-ai-models-work.md) — companion to [Lab 02](../lab-02-qwen-inference.md).
 
 ## Format for future guides
 
