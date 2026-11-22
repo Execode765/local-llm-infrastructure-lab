@@ -171,7 +171,7 @@ The technical experiment documents the commands used to disable SSH, the connect
 
 Unlike this beginner-friendly explanation, the technical report provides the operational details needed to understand and reproduce the controlled experiment.
 
-**Current scope:** This lesson covers the completed SSH failure-and-recovery experiment. SSH security hardening is reserved for a future experiment.
+**Current scope:** This lesson covers the completed SSH failure-and-recovery experiment. SSH security hardening is planned as **Lab 03 — Phase 2, Experiment 02**; it has not been performed or documented as complete.
 
 ## AI-Assisted Educational Documentation
 
