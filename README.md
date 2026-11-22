@@ -15,7 +15,7 @@ Hands-on portfolio documenting local LLM deployment, GPU inference testing, Linu
 | 03 | Ubuntu Server VM, SSH administration, controlled failure and recovery, security fundamentals | In progress — initial setup and SSH recovery documented; SSH hardening next | [Phase 1](labs/lab-03-ubuntu-server/lab-03-phase-1.md) · [Phase 2 — SSH Recovery](labs/lab-03-ubuntu-server/lab-03-phase-2-experiment-01-ssh-recovery.md) · [Command reference](labs/lab-03-ubuntu-server/lab-03-command-reference.md) |
 | 04 | Infrastructure monitoring and dashboard-building (proposed scope) | Planned — not started | — |
 
-## Current focus: Lab 03 — SSH hardening (Experiment 03)
+## Current focus: Lab 03 — Phase 2, Experiment 02: SSH Hardening
 
 **Completed and documented:**
 - Installed Ubuntu Server 24.04.5 LTS in VirtualBox, configured storage and NAT networking, and established SSH access from Windows PowerShell.
