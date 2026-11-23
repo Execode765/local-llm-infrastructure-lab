@@ -65,3 +65,44 @@
 - [Hugging Face Datasets](https://huggingface.co/datasets)
 
 _Last reviewed: November 2026. A personal learning reference, not a hardware compatibility certification._
+
+---
+
+## Addendum A — AI Model Platforms & Alternatives
+
+> These are **not all direct Hugging Face competitors**. Some host model files, some make local models easy to run, and others sell hosted inference. Use this section to recognize what kind of site you are visiting.
+
+| Platform | Main role | How it compares with Hugging Face | Why I might visit |
+| --- | --- | --- | --- |
+| [Hugging Face](https://huggingface.co/) | Model and dataset hub, demos, developer tools, hosted inference | Broad reference point | Inspect model cards, weights, licenses, datasets |
+| [ModelScope](https://modelscope.cn/) | Model/dataset community and hosting platform | One of the closer model-hub alternatives | Discover additional models, datasets, and demos |
+| [Kaggle](https://www.kaggle.com/) | Datasets, notebooks, competitions, and model resources | More focused on data science and experimentation | Browse datasets and reproducible notebooks |
+| [Ollama Library](https://ollama.com/library) | Catalog of models packaged for Ollama | Narrower: focused on models users can run via Ollama | Find supported model tags for the existing local lab |
+| [LM Studio](https://lmstudio.ai/) | Desktop application for finding, downloading, and running local models | Local runtime/tool, not a general-purpose model hub | Compare local inference workflows without changing the lab |
+| [GitHub](https://github.com/) | Source-code and release hosting | Hosts implementations and sometimes model assets, but is not primarily a model hub | Check original code, issues, releases, documentation |
+| [Replicate](https://replicate.com/) | Hosted model execution and APIs | More focused on running models as a cloud service | Understand managed inference and API deployment |
+| [Together AI](https://www.together.ai/) | Cloud AI inference and training services | More focused on hosted compute than model archiving | Learn how cloud model serving differs from local inference |
+| [OpenRouter](https://openrouter.ai/) | Unified API gateway to multiple hosted models/providers | A routing/access layer, not a general model-file repository | Compare hosted model availability and API options |
+
+### Quick category decoder
+
+- **Model hub:** A place to find model repositories, weights, metadata, and often datasets. Example: Hugging Face or ModelScope.
+- **Local runtime / model catalog:** Software and curated listings for running compatible models on your own machine. Example: Ollama or LM Studio.
+- **Cloud inference provider:** Runs models on remote hardware and typically exposes an API. Example: Replicate or Together AI.
+- **API aggregator/router:** Gives access to multiple hosted models/providers through one interface. Example: OpenRouter.
+- **Code and research community:** Stores implementation code, experiments, and related materials. Example: GitHub or Kaggle.
+
+### Questions to ask when visiting a new AI platform
+
+1. **Am I downloading weights or sending requests to someone else's server?**
+2. **Does this platform host the original model, a converted version, or only API access?**
+3. **What format and runtime are supported?** GGUF, Safetensors, Ollama, Transformers, etc.
+4. **Is this free to browse, free to download, or metered/pay-per-use?** These are different things.
+5. **What are the license, privacy, and data-handling terms?**
+6. **Is this useful for my current local lab, or just interesting background reading?**
+
+### Personal rule for this repository
+
+**Browsing and learning are allowed; no new installation, purchase, account, subscription, or separate project is implied.** Keep the existing Local LLM Infrastructure Lab priorities intact. Verify any model's actual compatibility and current service pricing before use.
+
+_Platform features, availability, and pricing can change. This is a navigation guide, not an endorsement or a current pricing comparison._
