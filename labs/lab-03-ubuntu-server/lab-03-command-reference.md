@@ -2,6 +2,22 @@
 
 Commands are grouped by where they run. **Do not run a Windows PowerShell command inside Ubuntu or vice versa.** Outputs are recorded where observed; this is a study reference, not a script to execute all at once.
 
+
+## Command categories — quick study index
+
+A command may serve more than one purpose. **Always check the environment and risk label before running it.** The detailed examples and observed results are below.
+
+| Category | What it helps you do | Examples | Where to study |
+| --- | --- | --- | --- |
+| Diagnostics **[READ]** | Inspect the current system without changing its configuration | `hostnamectl`, `lsblk`, `ss -tlnp`, `systemctl status` | Initial setup; sections B, C, H |
+| Configuration **[CHANGE]** | Create files or modify settings | `mkdir -p`, `cp -a`, `tee`, `mv`, `chmod` | Sections D, E, F |
+| Verification **[TEST]** | Check whether the intended result occurred | `sshd -t`, `sshd -T`, `cmp`, `diff -r`, fresh `ssh` login | Sections D, F, G |
+| Troubleshooting **[READ]** | Find why something failed | `journalctl`, `ls -la`, `ssh -v`, `systemctl --failed` | Sections B, H, J |
+| Recovery **[RECOVERY]** | Restore service or reverse a change | `systemctl start ssh.socket`, disable the hardening snippet | Sections B, I; Experiment 01 |
+| Security **[READ/CHANGE/TEST]** | Manage authentication and access | `ssh-keygen`, `authorized_keys`, `chmod 700`, `PasswordAuthentication no` | Sections C–G |
+
+**Safety note:** `[READ]` means the example is intended for inspection, not that every command with the same name is harmless. `systemctl stop` is disruptive; `systemctl status` is not. Recovery examples in section I were **documented but not executed** in Experiment 02.
+
 ## Windows PowerShell — Host diagnostics
 ```powershell
 Get-CimInstance Win32_Processor |
