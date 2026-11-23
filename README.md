@@ -22,7 +22,11 @@ Hands-on portfolio documenting local LLM deployment, GPU inference testing, Linu
 - Captured a clean-install VM snapshot for recovery.
 - Performed a controlled SSH connectivity failure-and-recovery exercise, preserving the troubleshooting commands and observed results.
 
-**SSH hardening verified:** Created a pre-hardening snapshot and configuration backups; configured ED25519 key login; added a dedicated early-loading SSH server hardening snippet; passed syntax and effective-policy checks; reloaded the service; confirmed a fresh key-based login and rejection of password-only SSH access; reviewed service logs. Rollback steps are documented but were not executed. See the [technical report](labs/lab-03-ubuntu-server/lab-03-phase-2-experiment-02-ssh-hardening.md) and [plain-English lesson](concepts-explained/05-ssh-hardening-explained.md).\n\n**Next work:** Review documentation and decide the next scoped Lab 03 activity. No additional experiment is claimed complete.
+**SSH hardening verified:** Created a pre-hardening snapshot and configuration backups; configured ED25519 key login; added a dedicated early-loading SSH server hardening snippet; passed syntax and effective-policy checks; reloaded the service; confirmed a fresh key-based login and rejection of password-only SSH access; reviewed service logs. Rollback steps are documented but were not executed. See the [technical report](labs/lab-03-ubuntu-server/lab-03-phase-2-experiment-02-ssh-hardening.md) and [plain-English lesson](concepts-explained/05-ssh-hardening-explained.md).
+
+**Next work:** Review documentation and decide the next scoped Lab 03 activity. No additional experiment is claimed complete.
+
+**Command study guide:** [Lab 03 Command Reference](labs/lab-03-ubuntu-server/lab-03-command-reference.md) now includes a categorized index for diagnostics, configuration, verification, troubleshooting, recovery, and security commands, with Windows/Ubuntu context and safety labels.
 
 ## Concepts explained
 
