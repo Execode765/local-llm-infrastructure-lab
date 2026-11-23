@@ -13,7 +13,7 @@ Hands-on portfolio documenting local LLM deployment, GPU inference testing, Linu
 | 01 | Ollama deployment, GPU verification, storage and benchmarking | Completed | [Lab 01](labs/lab-01-ollama-setup/) |
 | 02 | Qwen inference and performance testing | Completed within available hardware limits | [Lab 02](labs/lab-02-qwen-inference/lab-02-qwen-inference.md) |
 | 03 | Ubuntu Server VM, SSH administration, controlled failure and recovery, security fundamentals | In progress — Phase 1 and Phase 2 Experiments 01–02 completed and documented | [Phase 1](labs/lab-03-ubuntu-server/lab-03-phase-1.md) · [Phase 2 — Experiment 01: SSH Recovery](labs/lab-03-ubuntu-server/lab-03-phase-2-experiment-01-ssh-recovery.md) · [Phase 2 — Experiment 02: SSH Hardening](labs/lab-03-ubuntu-server/lab-03-phase-2-experiment-02-ssh-hardening.md) · [Command reference](labs/lab-03-ubuntu-server/lab-03-command-reference.md) |
-| 04 | Infrastructure monitoring and dashboard-building (proposed scope) | Planned — not started | — |
+| 04 | Infrastructure monitoring, dashboard-building, alerting, and optional Windows/Ollama telemetry | Planned — experiments 01–05 outlined; no implementation started | [Lab 04 roadmap and resume checkpoint](labs/lab-04-infrastructure-monitoring/README.md) |
 
 ## Latest completed activity: Lab 03 — Phase 2, Experiment 02: SSH Hardening
 
