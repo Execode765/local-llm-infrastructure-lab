@@ -1,6 +1,6 @@
 # Personal Operational Frameworks — My Operating Firmware
 
-> **Purpose:** Three repeatable frameworks for learning, engineering, and communicating. Think of them as personal operating firmware: when a situation changes, return to the appropriate procedure instead of improvising from scratch.
+> **Purpose:** Four repeatable frameworks for learning, engineering, communicating, and strategic acquisition. Think of them as personal operating firmware: when a situation changes, return to the appropriate procedure instead of improvising from scratch.
 >
 > **Scope:** These principles apply to the Local LLM Infrastructure Lab, Vapor Loop, field support, future infrastructure work, and everyday problem-solving. This is a reference document, **not a new project or lab**.
 
@@ -50,6 +50,21 @@
 
 **Guardrail:** Don't confuse recognition with mastery. Ask questions when the reference is insufficient; independence does not mean avoiding help.
 
+## 4. Strategic Acquisition: Research → Evaluate → Verify Affordability → Purchase When Ready
+
+**Use when:** Considering hardware, software, or other purchases, especially limited-time promotions.
+
+| Step | Reminder |
+| --- | --- |
+| **Research** | Gather specifications, actual prices, alternatives, and warranty information. |
+| **Evaluate** | Assess operational value, compatibility, supporting infrastructure, and total cost of ownership. |
+| **Verify Affordability** | Confirm stable cash flow, protected emergency savings, and manageable total repayment before committing. |
+| **Purchase When Ready** | Proceed only when technical requirements and financial readiness are both satisfied; otherwise defer. |
+
+**Example:** A discounted GPU may require a new power supply, cooling, or other supporting components. Compare the full deployment cost against a complete, tested workstation rather than buying the GPU in isolation.
+
+**Guardrail:** **A sale is a reason to research, not a reason to purchase.** A promotion does not override financial readiness. Keep educational hardware restoration separate from strategic workstation acquisition.
+
 ## Which firmware do I load?
 
 | Situation | Framework |
@@ -57,12 +72,13 @@
 | I'm building or troubleshooting something | **Engineering** |
 | I need to explain an issue or recommend action | **Operational Communication** |
 | I'm exploring something unfamiliar | **Independent Learning** |
+| I'm considering a purchase or promotional offer | **Strategic Acquisition** |
 
 The frameworks can be used together. For example: **learn** what a metric means, **engineer** a reliable monitoring test, then **communicate** what the results mean.
 
 ## Operating rules
 
-- Keep the three frameworks stable; refine only when real experience shows a gap.
+- Keep the four frameworks stable; refine only when real experience shows a gap.
 - Prefer evidence over assumptions, clarity over jargon, and completion over project sprawl.
 - Preserve meaningful results in the appropriate existing repository.
 - Use AI as an assistant to learning and verification, **not a substitute for independent understanding**.
